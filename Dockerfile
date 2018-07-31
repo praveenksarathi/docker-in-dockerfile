@@ -4,11 +4,13 @@
 ############################################################
 
 # Set the base image to Ubuntu
-FROM ubuntu
+FROM ubuntu:latest
 
 MAINTAINER praveenksarathi
 
-# Update the repository sources list
+ENV http_proxy ""
+ENV https_proxy ""
+
 RUN apt-get remove docker docker-engine docker.io
 
 RUN apt-get update && apt-get install \ 
@@ -23,4 +25,6 @@ RUN apt-key fingerprint 0EBFCD88
 
 RUN sudo apt-get install docker-ce
 
-CMD docker pull alexeiled/docker-oracle-xe-11g
+CMD docker pull imagename:tag
+
+CMD docker run imagename:tag
